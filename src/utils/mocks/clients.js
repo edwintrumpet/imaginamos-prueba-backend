@@ -1,5 +1,4 @@
 const clientsMock = [{
-  id: '5de5db0efc13ae041b000000',
   name: {
     firstName: 'Morie',
     lastName: 'Marmon',

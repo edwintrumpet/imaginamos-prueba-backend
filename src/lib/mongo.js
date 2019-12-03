@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const debug = require('debug')('app:db');
 const { config } = require('../config');
 
@@ -40,6 +40,16 @@ class MongoLib {
     return this.connect()
       .then((db) => db.collection(collection).insertOne(data))
       .then((result) => result.insertedId);
+  }
+
+  update(collection, id, data) {
+    return this.connect()
+      .then((db) => db.collection(collection).updateOne(
+        { _id: ObjectId(id) },
+        { $set: data },
+        { upsert: true },
+      ))
+      .then((result) => result.upsertedId || id);
   }
 }
 
