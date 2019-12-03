@@ -5,7 +5,7 @@ const { config } = require('../config');
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
 const DB_NAME = config.dbName;
-const MONGO_URI = `mongo+srv://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${DB_NAME}?retryWrites=true&w=majority`;
+const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${DB_NAME}?retryWrites=true&w=majority`;
 
 class MongoLib {
   constructor() {
@@ -26,6 +26,17 @@ class MongoLib {
       });
     }
     return MongoLib.connection;
+  }
+
+  get(collection, query) {
+    return this.connect()
+      .then((db) => db.collection(collection).find(query).toArray());
+  }
+
+  create(collection, data) {
+    return this.connect()
+      .then((db) => db.collection(collection).insertOne(data))
+      .then((result) => result.insertedId);
   }
 }
 
