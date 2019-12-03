@@ -1,5 +1,7 @@
 const express = require('express');
 const DeliveriesService = require('../services/deliveries');
+const { createDeliverySchema } = require('../utils/schemas/deliveries');
+const validationHandler = require('../utils/middlewares/validationHandler');
 
 const deliveriesRoutes = (app) => {
   const router = express.Router();
@@ -17,15 +19,19 @@ const deliveriesRoutes = (app) => {
     }
   });
 
-  router.post('/', async (req, res, next) => {
-    const { body: delivery } = req;
-    try {
-      const createdDeliveryId = await deliveriesService.createDelivery(delivery);
-      res.status(201).json({ data: createdDeliveryId, message: 'delivery created' });
-    } catch (err) {
-      next(err);
-    }
-  });
+  router.post(
+    '/',
+    validationHandler(createDeliverySchema),
+    async (req, res, next) => {
+      const { body: delivery } = req;
+      try {
+        const createdDeliveryId = await deliveriesService.createDelivery(delivery);
+        res.status(201).json({ data: createdDeliveryId, message: 'delivery created' });
+      } catch (err) {
+        next(err);
+      }
+    },
+  );
 };
 
 module.exports = deliveriesRoutes;
