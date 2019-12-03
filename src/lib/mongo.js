@@ -5,11 +5,18 @@ const { config } = require('../config');
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
 const DB_NAME = config.dbName;
-const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${DB_NAME}?retryWrites=true&w=majority`;
+const DB_LOCAL = config.dbLocal;
+let mongoUri;
+
+if (DB_LOCAL) {
+  mongoUri = DB_LOCAL;
+} else {
+  mongoUri = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${DB_NAME}?retryWrites=true&w=majority`;
+}
 
 class MongoLib {
   constructor() {
-    this.client = new MongoClient(MONGO_URI, {
+    this.client = new MongoClient(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
