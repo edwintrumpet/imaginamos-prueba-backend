@@ -1,12 +1,11 @@
 const express = require('express');
 const debug = require('debug')('app:server');
 const { config } = require('./config');
+const deliveriesRoutes = require('./routes/deliveries');
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello world!');
-});
+deliveriesRoutes(app);
 
 app.listen(config.port, (err) => {
   if (err) debug(err);
