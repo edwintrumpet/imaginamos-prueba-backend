@@ -1,0 +1,28 @@
+{
+  "name": "prueba-backend",
+  "version": "1.0.0",
+  "description": "API rest de la prueba técnica para backend en Imaginamos",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node src/index",
+    "dev": "DEBUG=app* nodemon src/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwintrumpet/imaginamos-prueba-backend.git"
+  },
+  "keywords": [],
+  "author": "spark.com.co@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edwintrumpet/imaginamos-prueba-backend/issues"
+  },
+  "homepage": "https://github.com/edwintrumpet/imaginamos-prueba-backend#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
