@@ -8,7 +8,7 @@ API rest de la prueba técnica para backend en **Imaginamos**
 npm i
 ```
 
-Usar el archivo `.env.example` para construir el archivo `.env` en el que van las variables de entorno
+Usar el archivo `.env.example` para construir el archivo `.env` en el que van las variables de entorno.
 
 ## Scripts
 
@@ -20,6 +20,8 @@ Inicia el servidor en modo producción
 Muestra los errores marcados por la configuración de nuestro linter
 - `npm run lint:fix`  
 Corrige todos los errores para que el código esté bajo el estandar del linter
+
+En el directorio `src/scripts/mongo` se encuentran scripts para alimentar la base de datos con los valores dados en los mocks
 
 ## Autor
 

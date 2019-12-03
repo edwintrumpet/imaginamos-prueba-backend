@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const MongoLib = require('../lib/mongo');
 const ClientsService = require('./clients');
 const DriversService = require('./drivers');
@@ -12,8 +13,8 @@ class DeliveriesService {
 
   async getDeliveries({ userId, date }) {
     const query = {
-      driverId: userId,
-      date,
+      driverId: ObjectId(userId),
+      deliveryDate: new Date(date),
     };
     const deliveries = await this.mongoDB.get(this.collection, query);
     return deliveries || [];
@@ -30,7 +31,7 @@ class DeliveriesService {
       clientId: client.clientId,
       driverId: assignedDriver._id,
       address: client.address,
-      deliveryDate: delivery.deliveryDate,
+      deliveryDate: new Date(delivery.deliveryDate),
       deliveryTime: delivery.deliveryTime,
       status: 'confirmado',
     };
