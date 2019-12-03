@@ -5,6 +5,8 @@ const deliveriesRoutes = require('./routes/deliveries');
 
 const app = express();
 
+app.use(express.json());
+
 deliveriesRoutes(app);
 
 app.listen(config.port, (err) => {

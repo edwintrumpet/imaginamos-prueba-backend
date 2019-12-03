@@ -1,13 +1,16 @@
 const express = require('express');
-const { deliveriesMock } = require('../utils/mocks');
+const DeliveriesService = require('../services/deliveries');
 
 const deliveriesRoutes = (app) => {
   const router = express.Router();
   app.use('/api/deliveries', router);
 
-  router.get('/', async (req, res, next) => {
+  const deliveriesService = new DeliveriesService();
+
+  router.get('/:userId/:date', async (req, res, next) => {
+    const { date, userId } = req.params;
     try {
-      const deliveries = await Promise.resolve(deliveriesMock);
+      const deliveries = await deliveriesService.getDeliveries({ userId, date });
       res.status(200).json({ data: deliveries, message: 'deliveries listed' });
     } catch (err) {
       next(err);
@@ -15,8 +18,10 @@ const deliveriesRoutes = (app) => {
   });
 
   router.post('/', async (req, res, next) => {
+    const { body: delivery } = req;
+    console.log(delivery);
     try {
-      const createdDeliveryId = await Promise.resolve(deliveriesMock[0].id);
+      const createdDeliveryId = await deliveriesService.createDelivery(delivery);
       res.status(201).json({ data: createdDeliveryId, message: 'delivery created' });
     } catch (err) {
       next(err);
