@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node src/index",
-    "dev": "DEBUG=app* nodemon src/index"
+    "dev": "DEBUG=app* nodemon src/index",
+    "lint": "eslint ./src/",
+    "lint:fix": "eslint ./src/ --fix"
   },
   "repository": {
     "type": "git",
@@ -19,10 +21,14 @@
   },
   "homepage": "https://github.com/edwintrumpet/imaginamos-prueba-backend#readme",
   "dependencies": {
+    "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "nodemon": "^2.0.1"
   }
 }

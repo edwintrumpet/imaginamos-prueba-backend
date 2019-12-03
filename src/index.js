@@ -1,13 +1,14 @@
-const express = require('express')
-const { config } = require('./config')
+const express = require('express');
+const debug = require('debug')('app:server');
+const { config } = require('./config');
 
-const app = express()
+const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hello world!')
-})
+  res.send('Hello world!');
+});
 
 app.listen(config.port, (err) => {
-    if(err) console.log(err)
-    else console.log(`Listening on http://localhost:${config.port}`)
-})
+  if (err) debug(err);
+  else debug(`Listening on http://localhost:${config.port}`);
+});
