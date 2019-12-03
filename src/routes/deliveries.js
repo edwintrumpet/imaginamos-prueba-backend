@@ -1,6 +1,6 @@
 const express = require('express');
 const DeliveriesService = require('../services/deliveries');
-const { createDeliverySchema } = require('../utils/schemas/deliveries');
+const { createDeliverySchema, getDeliverySchema } = require('../utils/schemas/deliveries');
 const validationHandler = require('../utils/middlewares/validationHandler');
 
 const deliveriesRoutes = (app) => {
@@ -9,15 +9,19 @@ const deliveriesRoutes = (app) => {
 
   const deliveriesService = new DeliveriesService();
 
-  router.get('/:userId/:date', async (req, res, next) => {
-    const { date, userId } = req.params;
-    try {
-      const deliveries = await deliveriesService.getDeliveries({ userId, date });
-      res.status(200).json({ data: deliveries, message: 'deliveries listed' });
-    } catch (err) {
-      next(err);
-    }
-  });
+  router.get(
+    '/:userId/:date',
+    validationHandler(getDeliverySchema, 'params'),
+    async (req, res, next) => {
+      const { date, userId } = req.params;
+      try {
+        const deliveries = await deliveriesService.getDeliveries({ userId, date });
+        res.status(200).json({ data: deliveries, message: 'deliveries listed' });
+      } catch (err) {
+        next(err);
+      }
+    },
+  );
 
   router.post(
     '/',
