@@ -1,13 +1,22 @@
-const { deliveriesMock } = require('../utils/mocks');
+const MongoLib = require('../lib/mongo');
 
 class DeliveriesService {
-  async getDeliveries() {
-    const deliveries = await Promise.resolve(deliveriesMock);
+  constructor() {
+    this.collection = 'deliveries';
+    this.mongoDB = new MongoLib();
+  }
+
+  async getDeliveries({ userId, date }) {
+    const query = {
+      driverId: userId,
+      date,
+    };
+    const deliveries = await this.mongoDB.get(this.collection, query);
     return deliveries || [];
   }
 
-  async createDelivery() {
-    const createdDeliveryId = await Promise.resolve(deliveriesMock[0].id);
+  async createDelivery(delivery) {
+    const createdDeliveryId = await this.mongoDB.create(this.collection, delivery);
     return createdDeliveryId;
   }
 }

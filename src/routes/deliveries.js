@@ -19,7 +19,6 @@ const deliveriesRoutes = (app) => {
 
   router.post('/', async (req, res, next) => {
     const { body: delivery } = req;
-    console.log(delivery);
     try {
       const createdDeliveryId = await deliveriesService.createDelivery(delivery);
       res.status(201).json({ data: createdDeliveryId, message: 'delivery created' });
