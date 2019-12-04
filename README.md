@@ -61,6 +61,13 @@ En el directorio `src/scripts/mongo` se encuentran scripts para alimentar la bas
 }
 ```
 
+## Funcionamiento
+
+Inicialmente deben existir drivers en la base de datos, cuando un cliente use el endpoint del método _POST_ se le asignará uno de los drivers de forma aleatoria y se almacenarán los datos de la entrega en la base de datos.  
+Si el cliente ya está registrado con su email se usará su cuenta antigua y se agregará la dirección si es diferente. Si no existe además de agregar la entrega se agregará el cliente a la base de datos.
+
+El driver podrá obtener la lista de los pedidos asignados a él por medio del endpoint del método _GET_ y filtrar por fecha
+
 ## Autor
 
 Edwin García  
