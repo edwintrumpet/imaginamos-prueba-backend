@@ -7,7 +7,7 @@ class DriversService {
   }
 
   async getDrivers() {
-    const drivers = await this.mongoDB.get(this.collection, {});
+    const drivers = await this.mongoDB.get(this.collection, {}, {});
     return drivers || [];
   }
 

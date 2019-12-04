@@ -38,9 +38,9 @@ class MongoLib {
     return MongoLib.connection;
   }
 
-  get(collection, query) {
+  get(collection, query, options) {
     return this.connect()
-      .then((db) => db.collection(collection).find(query).toArray());
+      .then((db) => db.collection(collection).find(query, options).toArray());
   }
 
   create(collection, data) {

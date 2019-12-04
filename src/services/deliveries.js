@@ -16,7 +16,12 @@ class DeliveriesService {
       driverId: ObjectId(userId),
       deliveryDate: new Date(date),
     };
-    const deliveries = await this.mongoDB.get(this.collection, query);
+    const options = {
+      sort: {
+        deliveryTime: 1,
+      },
+    };
+    const deliveries = await this.mongoDB.get(this.collection, query, options);
     return deliveries || [];
   }
 

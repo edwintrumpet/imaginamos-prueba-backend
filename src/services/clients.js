@@ -10,7 +10,7 @@ class ClientsService {
     const query = {
       email,
     };
-    const [client] = await this.mongoDB.get(this.collection, query);
+    const [client] = await this.mongoDB.get(this.collection, query, {});
     return client || {};
   }
 
