@@ -2,6 +2,10 @@
 
 API rest de la prueba técnica para backend en **Imaginamos**
 
+## Sitio Web
+
+https://prueba-backend-imaginamos.now.sh/
+
 ## Instalación
 
 ```shell

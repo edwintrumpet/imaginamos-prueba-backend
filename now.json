@@ -1,0 +1,12 @@
+{
+    "name": "prueba-backend-imaginamos",
+    "version": 2,
+    "builds": [{"src": "src/index.js", "use": "@now/node"}],
+    "routes": [{"src": "/(.*)", "dest": "/src/index.js"}],
+    "env": {
+        "DB_USER": "@imaginamos-prueba-db-user",
+        "DB_PASSWORD": "@imaginamos-prueba-db-password",
+        "DB_HOST": "@imaginamos-prueba-db-host",
+        "DB_NAME": "@imaginamos-prueba-db-name"
+    }
+} 
