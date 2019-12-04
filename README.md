@@ -16,6 +16,8 @@ Usar el archivo `.env.example` para construir el archivo `.env` en el que van la
 Inicia el servidor en modo desarrollo
 - `npm start`  
 Inicia el servidor en modo producción
+- `npm run test`  
+Ejecuta los tests
 - `npm run lint`  
 Muestra los errores marcados por la configuración de nuestro linter
 - `npm run lint:fix`  

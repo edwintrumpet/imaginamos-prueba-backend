@@ -6,6 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node src/index",
     "dev": "DEBUG=app* nodemon src/index",
+    "test": "mocha --exit",
     "lint": "eslint ./src/",
     "lint:fix": "eslint ./src/ --fix"
   },
@@ -33,6 +34,10 @@
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "nodemon": "^2.0.1"
+    "mocha": "^6.2.2",
+    "nodemon": "^2.0.1",
+    "proxyquire": "^2.1.3",
+    "sinon": "^7.5.0",
+    "supertest": "^4.0.2"
   }
 }
