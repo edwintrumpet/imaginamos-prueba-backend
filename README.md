@@ -24,6 +24,10 @@ Inicia el servidor en modo desarrollo
 Inicia el servidor en modo producción
 - `npm run test`  
 Ejecuta los tests
+- `npm run cover`  
+Ejecuta en terminal el software que evalua la cobertura de los tests
+- `npm run report`  
+Ejecuta en una página web el software que evalua la cobertura de los tests
 - `npm run lint`  
 Muestra los errores marcados por la configuración de nuestro linter
 - `npm run lint:fix`  
